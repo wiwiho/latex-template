@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.2cm,right=2.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{version}
+\usepackage{thmtools}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+\usepackage{makecell}
+\usepackage{svg}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\setCJKmainfont[AutoFakeBold,AutoFakeSlant]{kaiu.ttf}
+\setmainfont[BoldFont={timesbd.ttf},SlantedFont={timesi.ttf}]{times.ttf}
+\usetikzlibrary{arrows,decorations.markings,decorations.pathreplacing}
+
+\lstset{
+basicstyle=\ttfamily,
+backgroundcolor=\color{white}
+}
+
+\begin{document}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{}
+\lhead{}
+\chead{}
+\rhead{}
+
+\pagestyle{fancy}
+\setlength\parindent{24pt}
+%\setlength\parskip{10pt}
+% \setlength\columnseprule{0.5pt}
+\newcommand{\parspace}{\vspace{10pt}}
+\newcommand{\sectitle}[1]{\parspace\noindent\textbf{#1}}
+% \raggedcolumns
+
+\lhead{\footnotesize \textbf{2020 師大附中資訊科校隊培訓 第二次模擬競賽}}
+
+\Large
+\begin{center}
+    \textbf{社團博覽會 (Exhibition)}
+\end{center}
+\normalsize
+
+\sectitle{問題描述}
+
+西元 2109 年，一年一度的社團博覽會又要開始了，每一個社團為了招收到優秀的學弟妹，無不拚盡全力準備，附中競程社也是如此。
+
+今年社聯會提出了一個新的措施：社聯會決定了 $n$ 個宣傳點，編號為 $1$、$2$、……、$n$，分散在校園的各處，每個社團都可以在其中選擇三個，並且只能在這三個地方宣傳或擺設攤位，避免大家到處跑來跑去，造成混亂。
+
+因為最近流感盛行，為了防疫，學務處只在 $n$ 個宣傳點之間開放了 $n-1$ 條道路，每條道路連接兩個相異的宣傳點，其他道路都被封鎖了，因此新生們只能利用這 $n-1$ 條路在各個宣傳點之間移動。保證對於任兩個相異的宣傳點 $u$、$v$，都可以沿著開放的道路從 $u$ 走到 $v$。
+
+經過附中競程社的調查，得知如果以某個宣傳點為起點，往至少兩條不同的連接這個宣傳點的道路走，並且不再回到這個宣傳點，都可以到達同一個社團選擇的宣傳點，或是這個宣傳點已經被這個社團選擇了，在這裡的新生就會對這個社團感興趣。
+
+舉例來說，以下兩張圖每個點都是宣傳點，線則表示道路，藍點是某個新生所在的位置，紅點是附中競程社所選擇的宣傳點，那麼左圖的新生不會對附中競程社感興趣，但右圖的會：
+
+\begin{center}
+    \includesvg[scale=0.5]{p2}
+    \includesvg[scale=0.5]{p3}
+\end{center}
+
+附中競程社希望有盡量多的宣傳點，滿足新生在那個宣傳點時，會對附中競程社感興趣，例如以下圖中的三個紅點是附中競程社選擇的宣傳點，綠點則是除了這三個點外，在那裡的新生會對附中競程社感興趣的宣傳點（注意在附中競程社選擇的宣傳點上的新生，也會對附中競程社感興趣）：
+
+\begin{center}
+    \includesvg[scale=0.5]{p4}
+\end{center}
+
+社長問身為附中競程社學術長的你，最多能有幾個宣傳點，滿足在那裡的新生會對附中競程社有興趣。
+
+\clearpage
+
+\sectitle{輸入格式}
+
+第一行有一個整數 $n$（$1 \leq n \leq 10^5$），表示社聯會決定了 $n$ 個宣傳點。
+
+接下來有 $n-1$ 行，其中第 $i$ 行包含兩個整數 $u_i$、$v_i$（$1 \leq u_i,v_i \leq n$），表示學務處開放了宣傳點 $u_i$ 和 $v_i$ 之間的道路。
+
+\sectitle{輸出格式}
+
+輸出一個整數，表示最多能有幾個宣傳點，滿足在那裡的新生會對附中競程社有興趣。
+
+\begin{tabularx}{\linewidth}{|X|X|}
+    \hline
+    \makecell[lt]{
+        \textbf{輸入範例 1}\\
+        \lstinputlisting{s00_00.in}
+    } &
+    \makecell[lt]{
+        \textbf{輸入範例 2}\\
+        \lstinputlisting{s00_01.in}
+    } \\ \hline
+    \makecell[lt]{
+        \textbf{輸出範例 1}\\
+        \lstinputlisting{s00_00.out}
+    } & 
+    \makecell[lt]{
+        \textbf{輸出範例 2}\\
+        \lstinputlisting{s00_01.out}
+    } \\ \hline
+    \makecell[lt]{
+        說明：\\
+        最好的選擇是宣傳點 5、17、8。
+    } & \\ \hline
+\end{tabularx}
+
+\sectitle{評分說明}
+
+本題共有兩組測試資料，每組可有多筆測試資料：
+
+第一組測試資料，開放的 $n-1$ 條道路構成一條路徑，共 8 分。
+
+第二組測試資料，$n \leq 300$，共 23 分。
+
+第三組測試資料，$n \leq 1000$，共 33 分。
+
+第四組測試資料，無特殊限制，共 36 分。
+
+\end{document}

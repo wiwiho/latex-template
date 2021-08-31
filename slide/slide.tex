@@ -1,0 +1,103 @@
+\documentclass[12pt, aspectratio=169]{beamer}
+\usefonttheme[onlymath]{serif}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{version}
+\usepackage{thmtools}
+\usepackage{qtree}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{xcolor}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\setCJKmainfont[AutoFakeBold,AutoFakeSlant]{SourceHanSansTW-Regular.otf}
+\usetikzlibrary{arrows,decorations.markings,decorations.pathreplacing}
+\newenvironment{Hint}{\noindent\textbf{Hint.}}{}
+
+\tikzstyle {graph node} = [circle, draw, minimum width=1cm]
+\tikzset{edge/.style = {decoration={markings,mark=at position 1 with %
+            {\arrow[scale=2,>=stealth]{>}}},postaction={decorate}}}
+
+\lstset{
+    basicstyle=\ttfamily\large\color{white},
+    numberstyle=\normalsize,
+    numbers=left,
+    stepnumber=1,
+    numbersep=3pt,
+    backgroundcolor=\color{black!90},
+    commentstyle=\color{white!70!green},
+    keywordstyle=\color{white!70!blue},
+    stringstyle=\color{white!70!yellow},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={\%*}{*)},
+    morekeywords={*}
+}
+
+\declaretheoremstyle[
+notefont=\bfseries,
+notebraces={}{},
+bodyfont=\normalfont\itshape,
+headformat=\NAME~\NUMBER~\NOTE,
+headpunct={\\},
+spaceabove=12pt
+]{problem}
+\declaretheoremstyle[
+notefont=,
+notebraces={}{},
+bodyfont=\normalfont,
+headformat=\NAME~\NUMBER~\NOTE,
+headpunct={},
+spaceabove=12pt
+]{Theorem}
+\declaretheorem[style=problem, name=例題, numberwithin=section]{texample}
+\declaretheorem[style=problem, name=習題, numberwithin=section]{tpractice}
+\declaretheorem[style=Theorem, name=Theorem, numberwithin=section]{tTheorem}
+\declaretheorem[style=Theorem, name=Lemma, numberwithin=section]{tLemma}
+\declaretheorem[style=Theorem, name=Proof, numberwithin=section]{tProof}
+
+\title{競賽經驗分享}
+\author{侯欣緯}
+\date{2020-09-18}
+
+\usecolortheme[named=white]{structure}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{frametitle}{fg=white}
+\usebeamercolor[fg]{normal text}
+
+\color{white}
+\begin{document}
+    \large
+
+    \setbeamercolor{background canvas}{bg=black!80}
+
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    \begin{frame}
+
+        \lstinputlisting[language=C++]{test.cpp}
+
+    \end{frame}
+
+\end{document}

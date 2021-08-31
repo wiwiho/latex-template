@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage[a4paper,top=2.8cm,bottom=2.8cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{version}
+\usepackage{thmtools}
+\usepackage{qtree}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\setCJKmainfont[BoldFont={SourceHanSerifTW-SemiBold.otf},AutoFakeSlant]{SourceHanSerifTW-Regular.otf}
+\usetikzlibrary{arrows,decorations.markings,decorations.pathreplacing}
+\pagestyle{fancy}
+\newenvironment{Hint}{\noindent\textbf{Hint.}}{}
+
+\tikzstyle {graph node} = [circle, draw, minimum width=1cm]
+\tikzset{edge/.style = {decoration={markings,mark=at position 1 with %
+            {\arrow[scale=2,>=stealth]{>}}},postaction={decorate}}}
+
+\lstset{
+language=C++,
+basicstyle=\footnotesize\ttfamily,
+numberstyle=\footnotesize,
+numbers=left,
+stepnumber=1,
+numbersep=5pt,
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+frame=false,
+tabsize=2,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false,
+escapeinside={\%*}{*)},
+morekeywords={*},
+literate={\ \ }{{\ }}1
+}
+
+\declaretheoremstyle[
+notefont=\bfseries,
+notebraces={}{},
+bodyfont=\normalfont\itshape,
+headformat=\NAME~\NUMBER~\NOTE,
+headpunct={\\},
+spaceabove=12pt
+]{problem}
+\declaretheoremstyle[
+notefont=,
+notebraces={}{},
+bodyfont=\normalfont,
+headformat=\NAME~\NUMBER~\NOTE,
+headpunct={},
+spaceabove=12pt
+]{Theorem}
+\declaretheorem[style=problem, name=例題, numberwithin=section]{example}
+\declaretheorem[style=problem, name=習題, numberwithin=section]{practice}
+\declaretheorem[style=Theorem, name=Theorem, numberwithin=section]{Theorem}
+\declaretheorem[style=Theorem, name=Lemma, numberwithin=section]{Lemma}
+\declaretheorem[style=Theorem, name=Proof, numberwithin=section]{Proof}
+
+\begin{document}
+
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{}
+\lhead{}
+\chead{}
+\rhead{}
+
+\begin{center}
+    \huge
+    \textbf{標題}
+
+    \vspace{12pt}
+    \large
+    HIHIHI
+    \normalsize
+\end{center}
+\vspace{36pt}
+
+\renewcommand{\contentsname}{目錄}
+\tableofcontents
+
+\clearpage
+
+\renewcommand{\headrulewidth}{1pt}
+\pagenumbering{arabic}
+\setlength\parindent{24pt}
+\setlength\parskip{12pt}
+\cfoot{\thepage}
+\lhead{左邊}
+\chead{中間}
+\rhead{右邊}
+
+\end{document}

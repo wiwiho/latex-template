@@ -1,0 +1,153 @@
+\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage[a4paper,top=2.8cm,bottom=2.8cm,left=2.8cm,right=2.8cm]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{version}
+\usepackage{thmtools}
+\usepackage{multicol}
+\usepackage{fancyhdr}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\setCJKmainfont[AutoFakeBold,AutoFakeSlant]{kaiu.ttf}
+\setmainfont[BoldFont={timesbd.ttf},SlantedFont={timesi.ttf}]{times.ttf}
+\usetikzlibrary{arrows,decorations.markings,decorations.pathreplacing}
+
+\lstset{
+basicstyle=\ttfamily,
+backgroundcolor=\color{white}
+}
+
+\begin{document}
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{}
+\lhead{}
+\chead{}
+\rhead{}
+
+\pagestyle{fancy}
+\setlength\parindent{24pt}
+%\setlength\parskip{10pt}
+\setlength\columnseprule{0.5pt}
+\newcommand{\parspace}{\vspace{10pt}}
+\newcommand{\sectitle}[1]{\parspace\noindent\textbf{#1}}
+\raggedcolumns
+
+\LARGE
+\begin{center}
+    202006 APCS 模擬測驗
+
+    \vspace{15pt}
+    2020.06.28
+\end{center}
+\normalsize
+
+\vspace{80pt}
+
+\Large
+\begin{center}
+    實作題 \hspace{10pt} 注意事項
+\end{center}
+
+\large
+\vspace{10pt}
+
+\noindent
+注意事項與操作說明：\\
+\href{https://hackmd.io/@joylintp/APCSM_202006}{https://hackmd.io/@joylintp/APCSM\_202006}
+\begin{enumerate}
+    \item 本測驗並非由官方舉辦，成績僅供參考，不應作為大學程式設計先修檢測之成績證明。
+    \item 測驗過程中建議不要使用任何方式查詢與題目相關之資訊，或是使用預先準備好的電子資料，以達到最佳模擬測驗效果。
+    \item 對於公開組，建議各語言選擇項目如下：
+        \begin{itemize}
+            \item C：GNU GCC C11 5.1.0
+            \item C++：GNU G++11 5.1.0
+            \item Java：Java 11.0.5
+            \item Python：Python 3.7.2
+        \end{itemize}
+    \item 測驗中的評測結果正確僅代表通過範例測資。計算成績時只會以各題最後一筆的程式碼評測。
+\end{enumerate}
+
+\normalsize
+
+\clearpage
+
+\rhead{\footnotesize 109 年 6 月 28 日\\202006 APCS 模擬測驗}
+
+\Large
+\begin{center}
+    \textbf{第 1 題 \hspace{12pt} 站名顯示器 (Monitor)}
+\end{center}
+\normalsize
+
+\sectitle{問題描述}
+
+小皓是認真上課的乖小孩，他每天都會準時搭捷運上學。今天在捷運他看著車廂中的站名顯示器，突然發現左右兩側的站名順序和箭頭方向竟然是相反的！
+
+舉例來說，經過的車站名稱依序為 \texttt{ABC}、\texttt{DEF}、\texttt{GHI}、\texttt{JKL}，當某側顯示器的內容為 \texttt{ABC->DEF->GHI->JKL}，則另一側顯示的則會是 \texttt{JKL<-GHI<-DEF<-ABC}。如此一來，無論乘客面向哪一側的顯示器，上面顯示的箭頭指的方向便會與列車行進方向相同了。
+
+小皓覺得這樣的設計太有趣了，他決定在家中走廊的兩側用相同的方式貼上所有捷運站的名字。他已經做好了其中一側的貼紙了，你能幫他印出另一側的文字嗎？
+
+\sectitle{輸入格式}
+
+輸入只有一行，為一個長度不超過 500 且不含空白的字串，為其中一側貼紙上的文字。其中車站名稱僅由大寫英文字母組成，並且名稱間會以 \texttt{->} 兩字元隔開。保證至少會有兩個車站，並且可能會有相同名稱的車站。
+
+\sectitle{輸出格式}
+
+將車站以相反的順序輸出，車站之間以 \texttt{<-} 兩字元隔開，字元間不應有多餘的空白。
+
+\begin{multicols}{2}
+
+\sectitle{範例一：輸入}
+
+\begin{lstlisting}
+ABC->DEF->GHI->JKL
+\end{lstlisting}
+
+\sectitle{範例一：輸出}
+
+\begin{lstlisting}
+JKL<-GHI<-DEF<-ABC
+\end{lstlisting}
+
+\sectitle{（說明）}
+
+經過的車站名稱依序為 \texttt{ABC}、\texttt{DEF}、\texttt{GHI}、\texttt{JKL}。
+
+\columnbreak
+
+\sectitle{範例二：輸入}
+
+\begin{lstlisting}
+Y->S->A->E->S->I->S->C->P->A
+\end{lstlisting}
+
+\sectitle{範例二：輸出}
+
+\begin{lstlisting}
+A<-P<-C<-S<-I<-S<-E<-A<-S<-Y
+\end{lstlisting}
+
+\end{multicols}
+
+\sectitle{評分說明：}
+
+每一筆測試資料的執行時間限制均為 1 秒，記憶體限制均為 256 MB，依正確通過測資筆數給分。其中：
+
+第 1 子題組 20 分：所有車站名稱皆只由一個大寫英文字母組成。
+
+第 2 子題組 80 分：無額外限制。
+
+\end{document}

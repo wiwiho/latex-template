@@ -1,0 +1,187 @@
+\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage[a4paper,top=2.8cm,bottom=2.8cm,left=2cm,right=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{version}
+\usepackage{thmtools}
+\usepackage{qtree}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{csquotes}
+\usepackage{makecell}
+\usepackage{multicol}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\setCJKmainfont[AutoFakeBold,AutoFakeSlant]{SourceHanSansTW-Regular.otf}
+\usetikzlibrary{arrows,decorations.markings,decorations.pathreplacing}
+\pagestyle{fancy}
+\newenvironment{Hint}{\noindent\textbf{Hint.}}{}
+
+\tikzstyle {graph node} = [circle, draw, minimum width=1cm]
+\tikzset{edge/.style = {decoration={markings,mark=at position 1 with %
+            {\arrow[scale=2,>=stealth]{>}}},postaction={decorate}}}
+
+\lstset{
+basicstyle=\ttfamily,
+backgroundcolor=\color{white}
+}
+
+\declaretheoremstyle[
+notefont=\bfseries,
+notebraces={}{},
+bodyfont=\normalfont\itshape,
+headformat=\NAME~\NUMBER~\NOTE,
+headpunct={\\},
+spaceabove=12pt
+]{problem}
+\declaretheoremstyle[
+notefont=,
+notebraces={}{},
+bodyfont=\normalfont,
+headformat=\NAME~\NUMBER~\NOTE,
+headpunct={},
+spaceabove=12pt
+]{Theorem}
+\declaretheorem[style=problem, name=例題, numberwithin=section]{example}
+\declaretheorem[style=problem, name=習題, numberwithin=section]{practice}
+\declaretheorem[style=Theorem, name=Theorem, numberwithin=section]{Theorem}
+\declaretheorem[style=Theorem, name=Lemma, numberwithin=section]{Lemma}
+\declaretheorem[style=Theorem, name=Proof, numberwithin=section]{Proof}
+
+\newcommand{\sectitle}[1]{\large\noindent\textbf{#1}\normalsize}
+\newcommand{\subsectitle}[1]{\noindent\textbf{#1}}
+\newcommand{\saminput}[1]{\noindent\textbf{範例輸入 #1}}
+\newcommand{\samoutput}[1]{\noindent\textbf{範例輸出 #1}}
+\newcommand{\samnote}[1]{\vspace{-12pt} \noindent 說明：#1}
+\newcommand{\probtitle}[3]{
+    \clearpage
+    \begin{center}
+        \huge
+        #1. #2 \\
+        \normalsize
+        Problem ID: #3
+    \end{center}
+}
+\raggedcolumns
+\setlength\columnseprule{0.5pt}
+
+\begin{document}
+
+\renewcommand{\headrulewidth}{0pt}
+\cfoot{}
+\lhead{}
+\chead{}
+\rhead{}
+
+\begin{titlepage}
+    \vspace*{\fill}
+    \begin{center}
+        \huge
+        師大附中電算社\\
+        109 上學期社內賽
+
+        \vspace{50pt}
+        \Large
+        請詳閱注意事項後再開始作答
+        \normalsize
+    \end{center}
+    \vspace*{\fill}
+\end{titlepage}
+
+\clearpage
+
+\renewcommand{\headrulewidth}{1pt}
+\pagenumbering{arabic}
+\setlength\parindent{24pt}
+\setlength\parskip{12pt}
+\cfoot{\thepage}
+\lhead{師大附中電算社}
+\rhead{109 上學期社內賽}
+
+\noindent
+\huge
+\textbf{注意事項}
+\normalsize
+
+\begin{enumerate}
+    \item 本測驗只能以 C++ 作答，作答語言請選擇以下其中之一：
+    \begin{itemize}
+        \item GNU G++11 7.3.0
+        \item GNU G++14 7.3.0
+        \item GNU G++17 7.3.0
+        \item GNU G++17 9.2.0 (64 bit, msys 2)
+    \end{itemize}
+    \item 測驗期間可以上網查詢資料、查看紙本資料、舉手請學術組成員幫忙或與他人討論，唯不得抄襲他人程式碼。
+    \item 每一題都有若干個子題，一個子題中有數筆測試資料，需通過全部測試資料才能得到該子題的分數。一題的分數以單一提交的最高分數計。
+    \item 排名比序如下：
+    \begin{enumerate}
+        \item 總分較高者
+        \item 滿分題數較多者
+        \item 最後一次分數改變的時間較早者（依 submission 編號為準）
+    \end{enumerate}
+    \item 得到至少 100 分者可於 4 點後領取小獎品，高一前九名與高二前四名可領取大獎品。學術組成員不參與排名。
+    \item 對題目敘述有疑問，請使用競賽系統的提問功能。
+    \item 若覺得使用 \texttt{cin} 與 \texttt{cout} 輸入輸出消耗太多執行時間，請在 main 函數開頭加上：
+\begin{lstlisting}
+std::ios_base::sync_with_stdio(false);
+std::cin.tie(0);
+\end{lstlisting}
+    並以 \texttt{'{\textbackslash}n'} 代替 \texttt{endl}。加上這些後請不要使用 \texttt{printf} 和 \texttt{scanf}。
+    \item 題目有按照（學術長認為的）難度由易到難排序。
+    \item $a \bmod b$ 指的是 $a$ 除以 $b$ 取餘數，也就是 \texttt{a \% b}。
+    \item 在進行加、減、乘之前，先將數字 $\bmod$ 過並不改變結果。也就是：
+    \begin{itemize}
+        \item $(a + b) \bmod m = ((a \bmod m) + (b \bmod m)) \bmod m$
+        \item $(a - b) \bmod m = ((a \bmod m) - (b \bmod m)) \bmod m$
+        \item $(a \times b) \bmod m = ((a \bmod m) \times (b \bmod m)) \bmod m$
+    \end{itemize}
+\end{enumerate}
+
+\clearpage
+
+\probtitle{A}{巧克力鬆餅}{machine}
+\input{chocolate.tex}
+
+\probtitle{B}{簽到題}{checkin}
+\input{checkin.tex}
+
+\probtitle{C}{數學習作}{math}
+\input{math.tex}
+
+\probtitle{D}{北樓自助餐}{lunch}
+\input{lunch.tex}
+
+\probtitle{E}{評分表單}{scoring}
+\input{scoring.tex}
+
+\probtitle{F}{\Large 雞包包雞包包雞包紙包紙包雞包包雞紙包雞包紙包雞}{chicken}
+\input{chicken.tex}
+
+\probtitle{G}{神祕的資料結構}{mysterious}
+\input{mysterious.tex}
+
+\probtitle{H}{掃蕩}{clear}
+\input{clear.tex}
+
+\probtitle{I}{不插電的機器}{machine}
+\input{machine.tex}
+
+\probtitle{J}{我拆~我拆~我拆拆拆}{partition}
+\input{partition.tex}
+
+\end{document}

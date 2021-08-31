@@ -1,0 +1,93 @@
+\sectitle{題目敘述}
+
+已經上了一個學期的社課的你，每次上社課的第一件事，就是填寫簽到表單。點名是一個很辛苦的工作，因為可能會有人有來但是沒簽到、沒來但是有簽到（不要問我他是怎麼簽的），為了減輕副社長的工作量，他需要你幫他找出\textbf{有多少人}沒有填寫簽到表單。
+
+\sectitle{輸入說明}
+
+第一行有兩個整數 $N$、$M$（$1 \leq N \leq 2 \times 10^5$，$0 \leq M \leq N$），表示社員有 $N$ 個，並且有 $M$ 個人填寫了簽到表單。
+
+接下來有 $N$ 行，表示社員名單，每一行包含一個六位數字，表示一個社員，這個六位數字的前四位是班號、後兩位是座號。保證沒有社員的班號和座號皆相同。
+
+接下來有 $M$ 行，表示簽到名單，每一行包含一個六位數字，表示一個有簽到的社員，其意義同上。保證沒有社員重複簽到。
+
+每個社員的班號都在 1 到 9999 之間，座號都在 1 到 50 之間，不保證這個人實際上存在。
+
+\sectitle{輸出說明}
+
+輸出一個整數，表示沒有簽到的社員總數。
+
+\sectitle{提示}
+
+\begin{itemize}
+    \item 你不需要找出「有哪些人沒來」，只需要找出「有幾個人沒來」。
+    \item 好像可以不用知道有誰有簽到？
+\end{itemize}
+
+\sectitle{範例測資}
+
+\begin{multicols}{2}
+\saminput{1}
+\begin{lstlisting}
+4 2
+151001
+151008
+151015
+151030
+151001
+151008
+\end{lstlisting}
+\columnbreak
+\samoutput{1}
+\begin{lstlisting}
+2
+\end{lstlisting}
+\end{multicols}
+
+\samnote{151015 和 151030 沒有簽到。}
+
+\begin{multicols}{2}
+\saminput{2}
+\begin{lstlisting}
+3 3
+151908
+151511
+152440
+151511
+151908
+152440
+\end{lstlisting}
+\columnbreak
+\samoutput{2}
+\begin{lstlisting}
+0
+\end{lstlisting}
+\end{multicols}
+
+\begin{multicols}{2}
+\saminput{3}
+\begin{lstlisting}
+3 0
+151908
+151511
+152440
+\end{lstlisting}
+\columnbreak
+\samoutput{3}
+\begin{lstlisting}
+3
+\end{lstlisting}
+\end{multicols}
+
+\sectitle{評分說明}
+
+\begin{table}[h]
+    \centering
+    \begin{tabularx}{0.8\textwidth}{ccX}
+        子題編號 & 分數 & 說明 \\ \hline
+        1 & 8 & $N=M$ \\
+        2 & 13 & $M=0$ \\
+        3 & 16 & $N,M \leq 10$\\
+        4 & 42 & $N,M \leq 10^3$\\
+        5 & 21 & 無額外限制
+    \end{tabularx}
+\end{table}
