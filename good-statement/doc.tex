@@ -54,23 +54,27 @@ basicstyle=\footnotesize\ttfamily
 \newcounter{ProblemSample}
 \newcommand{\ProblemSample}[2]{
     \stepcounter{ProblemSample}
-    \begin{multicols}{2}
+    \noindent
+    \begin{minipage}[t]{0.5\textwidth}
         \ProblemSubsection{範例輸入 \theProblemSample}
         \lstinputlisting{#1}
-        \columnbreak
+    \end{minipage}
+    \begin{minipage}[t]{0.5\textwidth}
         \ProblemSubsection{範例輸出 \theProblemSample}
         \lstinputlisting{#2}
-    \end{multicols}
+    \end{minipage}
 }
 \newenvironment{ProblemSampleWithNote}[2]{
     \stepcounter{ProblemSample}
-    \begin{multicols}{2}
+    \noindent
+    \begin{minipage}[t]{0.5\textwidth}
         \ProblemSubsection{範例輸入 \theProblemSample}
         \lstinputlisting{#1}
-        \columnbreak
+    \end{minipage}
+    \begin{minipage}[t]{0.5\textwidth}
         \ProblemSubsection{範例輸出 \theProblemSample}
         \lstinputlisting{#2}
-    \end{multicols}
+    \end{minipage}
     \vspace{-0.4cm}
     \ProblemSubsection{範例說明 \theProblemSample}
 }{}
