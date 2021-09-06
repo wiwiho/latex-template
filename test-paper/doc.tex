@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{version}
+\usepackage{thmtools}
+\usepackage{qtree}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{ctable}
+\usepackage{totcount}
+\usepackage{makecell}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\setCJKmainfont[BoldFont={SourceHanSerifTW-SemiBold.otf},AutoFakeSlant]{SourceHanSerifTW-Regular.otf}
+\setmonofont{Consolas}
+\newfontfamily{\TestTitleMainFont}{SourceHanSansTW-Bold.otf}
+\newCJKfontfamily{\TestTitleCJKFont}{SourceHanSansTW-Bold.otf}
+\newcommand{\TestTitleFont}{\TestTitleMainFont\TestTitleCJKFont}
+
+\pagestyle{fancy}
+
+\lstset{
+    language=C,
+    basicstyle=\footnotesize\ttfamily,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={\%*}{*)},
+    morekeywords={*},
+    literate={\ \ }{{\ }}1,
+    aboveskip=0pt,
+    belowskip=0pt
+}
+
+\newcommand{\TestTitle}[1]{
+    \begin{center}
+        \TestTitleFont\LARGE{#1}
+    \end{center}
+}
+\newcommand{\TestSection}[1]{\par\noindent{\TestTitleFont #1}\normalsize\par}
+
+\newenvironment{TestProblem}{
+    \item
+}{\vspace{0.3cm}}
+
+\newcommand{\TestOptionQuater}[4]{
+    \hspace{-0.28cm}
+    \begin{tabular}{p{0.16\linewidth}p{0.16\linewidth}p{0.16\linewidth}p{0.16\linewidth}}
+        (A) #1 & (B) #2 & (C) #3 & (D) #4
+    \end{tabular}
+}
+\newcommand{\TestOptionHalf}[4]{
+    \hspace{-0.28cm}
+    \begin{tabular}{p{0.4\linewidth}p{0.4\linewidth}}
+        (A) #1 & (B) #2 \\
+        (C) #3 & (D) #4
+    \end{tabular}
+}
+\newcommand{\TestOptionOne}[4]{
+    % \begin{tabular}{p{0.64\linewidth}}
+        % \makecell[l]{
+        \begin{enumerate}[(A)]
+            \item #1
+            \item #2
+            \item #3
+            \item #4
+        \end{enumerate}
+        % }
+    % \end{tabular}
+}
+
+\setlength{\columnseprule}{1pt}
+
+\setlist[enumerate]{itemsep=0pt, parsep=0pt, topsep=0pt, leftmargin=*}
+\setlist[itemize]{itemsep=0pt, parsep=0pt, topsep=0pt, leftmargin=*}
+
+\begin{document}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\baselinestretch}{1.1}
+\pagenumbering{arabic}
+\setlength\parindent{0pt}
+\setlength\parskip{12pt}
+\cfoot{\thepage}
+
+\TestTitle{110 學年度~師大附中資訊學科能力競賽~筆試}
+
+\begin{multicols*}{2}
+    \TestSection{單選題（共 25 題，一題 4 分，總分 100 分）}
+
+    \begin{enumerate}
+        \begin{TestProblem}
+            以下程式碼之輸出為何？
+
+            \TestOptionQuater{60}{50}{65}{54}
+
+            \lstinputlisting{test.c}
+        \end{TestProblem}
+    \end{enumerate}
+\end{multicols*}
+
+\clearpage
+
+\begin{multicols*}{2}
+    \TestSection{題組 1}
+
+    小華想要實作一個樹狀資料結構，這個樹狀資料結構由若干個節點組成一棵樹，一個節點包含兩個屬性：標籤和優先度，任兩個節點的標籤都不相同。這個資料結構是一個二元樹，也就是說，有一個節點為根節點，每一個節點可能會有左或右子節點，或兩者皆有，一個節點會是它的子節點的父節點。
+
+    這個資料結構滿足兩個性質：
+    \begin{itemize}
+        \item 樹性質：對於一個節點 $v$，若它有左子節點 $l$，則以 $l$ 為根節點的子樹中，所有節點的標籤都小於 $v$ 的標籤；若它有右子節點 $r$，則以 $r$ 為根節點的子樹中，所有節點的標籤都大於 $v$ 的標籤。
+        \item 堆性質：對於一個節點 $v$ 和它的某一個子節點 $c$，$v$ 的優先度要大於等於 $c$ 的優先度。
+    \end{itemize}
+\end{multicols*}
+
+\end{document}
