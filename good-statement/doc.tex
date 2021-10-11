@@ -28,7 +28,7 @@
 \XeTeXlinebreakskip = 0pt plus 1pt
 
 \setCJKmainfont[BoldFont={SourceHanSerifTW-SemiBold.otf},AutoFakeSlant]{SourceHanSerifTW-Regular.otf}
-\setmonofont{Consolas}
+\setmonofont{JetBrainsMono-Regular.ttf}
 \newfontfamily{\ProblemTitleMainFont}{SourceHanSansTW-Bold.otf}
 \newCJKfontfamily{\ProblemTitleCJKFont}{SourceHanSansTW-Bold.otf}
 \newcommand{\ProblemTitleFont}{\ProblemTitleMainFont\ProblemTitleCJKFont}
@@ -41,7 +41,7 @@ basicstyle=\footnotesize\ttfamily
 
 % \raggedcolumns
 
-\newcommand{\ProblemTitle}[3]{\noindent\Huge{\ProblemTitleFont #1. #2 (#3)}\normalsize\par}
+\newcommand{\ProblemTitle}[2]{\noindent\Huge{\ProblemTitleFont #1 (#2)}\normalsize\par}
 \newcommand{\ProblemSection}[1]{\vspace{0.6cm}\par\noindent\large{\ProblemTitleFont #1}\normalsize\par}
 \newcommand{\ProblemSubsection}[1]{\par\noindent{\ProblemTitleFont #1}\par}
 \newcommand{\ProblemStatement}{\ProblemSection{問題敘述}}
@@ -108,7 +108,7 @@ basicstyle=\footnotesize\ttfamily
 \cfoot{\thepage}
 \rhead{\small{2021 師大附中暑期資訊培訓 \\ 模擬競賽 I}}
 
-\ProblemTitle{D}{刷怪塔}{Monster}
+\ProblemTitle{刷怪塔}{Monster}
 
 \ProblemStatement
 
