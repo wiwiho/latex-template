@@ -1,0 +1,137 @@
+\documentclass[12pt]{article}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage[a4paper,top=2.8cm,bottom=2.8cm,left=2.3cm,right=2.3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{indentfirst}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{ulem}
+\usepackage{version}
+\usepackage{thmtools}
+\usepackage{qtree}
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{ctable}
+\usepackage{totcount}
+\usepackage{import}
+
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+\setCJKmainfont[BoldFont={SourceHanSerifTW-Bold.otf},AutoFakeSlant]{SourceHanSerifTW-Regular.otf}
+\setmonofont{JetBrainsMono-Regular.ttf}
+\newfontfamily{\ProblemTitleMainFont}{SourceHanSansTW-Bold.otf}
+\newCJKfontfamily{\ProblemTitleCJKFont}{SourceHanSansTW-Bold.otf}
+\newcommand{\ProblemTitleFont}{\ProblemTitleMainFont\ProblemTitleCJKFont}
+
+\pagestyle{fancy}
+
+\lstset{
+basicstyle=\footnotesize\ttfamily
+}
+
+% \raggedcolumns
+
+\newcommand{\ProblemTitle}[2]{\noindent\Huge{\ProblemTitleFont #1 (#2)}\normalsize\par}
+\newcommand{\ProblemSection}[1]{\vspace{0.6cm}\par\noindent\large{\ProblemTitleFont #1}\normalsize\par}
+\newcommand{\ProblemSubsection}[1]{\par\noindent{\ProblemTitleFont #1}\par}
+\newcommand{\ProblemStatement}{\ProblemSection{問題敘述}}
+\newcommand{\ProblemInput}{\ProblemSection{輸入說明}}
+\newcommand{\ProblemOutput}{\ProblemSection{輸出說明}}
+\newcommand{\ProblemConstraints}{\ProblemSection{測資限制}}
+
+\newcommand{\ProblemSampleTitle}{\ProblemSection{範例測資}}
+
+\newcounter{ProblemNumber}
+\newcommand{\NewProblem}{
+    \clearpage
+    \stepcounter{ProblemNumber}
+    \setcounter{ProblemSample}{0}
+    \setcounter{ProblemSubtask}{0}
+}
+
+\newcounter{ProblemSample}
+\newcommand{\ProblemSample}[2]{
+    \stepcounter{ProblemSample}
+    \noindent
+    \begin{minipage}[t]{0.5\textwidth}
+        \ProblemSubsection{範例輸入 \theProblemSample}
+        \lstinputlisting{#1}
+    \end{minipage}
+    \begin{minipage}[t]{0.5\textwidth}
+        \ProblemSubsection{範例輸出 \theProblemSample}
+        \lstinputlisting{#2}
+    \end{minipage}
+}
+\newenvironment{ProblemSampleWithNote}[2]{
+    \stepcounter{ProblemSample}
+    \noindent
+    \begin{minipage}[t]{0.5\textwidth}
+        \ProblemSubsection{範例輸入 \theProblemSample}
+        \lstinputlisting{#1}
+    \end{minipage}
+    \begin{minipage}[t]{0.5\textwidth}
+        \ProblemSubsection{範例輸出 \theProblemSample}
+        \lstinputlisting{#2}
+    \end{minipage}
+    \vspace{-0.4cm}
+    \ProblemSubsection{範例說明 \theProblemSample}
+}{}
+
+\newcommand{\ProblemSubtaskTitle}{\ProblemSection{評分說明}}
+\newtotcounter{ProblemSubtask}
+\newenvironment{ProblemSubtaskTable}{
+    \begin{center}
+        \begin{tabular}{ccl}
+            \specialrule{1.3pt}{0pt}{1pt}
+            子任務 & 分數 & 額外輸入限制 \\
+            \specialrule{0.5pt}{1pt}{1pt}
+}
+{
+            \specialrule{1.3pt}{1pt}{0pt}
+        \end{tabular}
+    \end{center}
+}
+\newcommand{\ProblemSubtask}[2]{ \stepcounter{ProblemSubtask} \theProblemSubtask & #1 & #2 \\ }
+
+\setlist[enumerate]{itemsep=0pt, parsep=0pt, topsep=0pt}
+\setlist[itemize]{itemsep=0pt, parsep=0pt, topsep=0pt}
+
+\newcommand{\Problem}[1]{
+    \rhead{\begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=north east,inner sep=0pt, shift={(-0.3,-0.3)}] at (current page.north east)
+                   {\includegraphics[width=5.5cm]{logo.png}};
+     \end{tikzpicture}}
+    \NewProblem 
+    \subimport{#1}{#1.tex}
+}
+
+\begin{document}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\baselinestretch}{1.3}
+\pagenumbering{arabic}
+\setlength\parindent{24pt}
+\setlength\parskip{12pt}
+\cfoot{\thepage}
+\rhead{}
+
+\input{Notice/Notice.tex}
+
+\clearpage
+
+\lhead{\vspace{-0.2cm}\small{110 學年度 $\dfrac{\text{師大附中}}{\text{延平中學}}\,\text{競技程式讀書會}$ 模擬競賽 III}}
+
+\Problem{Clean}
+
+\end{document}
