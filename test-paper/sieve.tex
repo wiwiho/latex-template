@@ -1,0 +1,72 @@
+\TestSection{題組 - 埃拉托斯特尼演算法}
+
+對於一個大於 $1$ 的正整數 $p$，我們稱其為一個質數若其正因數只有 $1$ 和 $p$。若某個大於 $1$ 的正整數 $x$ 不是質數，則存在兩個正整數 $a,b\ (1 < a \le b < x)$ 使得 $x = a \times b$，且 $a$ 為不超過 $\sqrt{x}$ 的質數。因此，在判斷 $x$ 是否為質數時，只須使用介於 $2$ 到 $\lfloor\sqrt{x}\rfloor$ 之間的所有質數試除即可；若所有數都無法整除 $x$，則 $x$ 為一個質數。
+
+埃拉托斯特尼演算法能在 $O(n\log\log n)$ 的時間複雜度內找出所有不超過 $n$ 的質數，其作法如下：先將所有介於 $2$ 到 $n$ 的整數標示為質數，並由小到大枚舉所有介於 $2$ 到 $\lfloor\sqrt{n}\rfloor$ 之間的正整數 $i$。若 $i$ 被標示為質數，則將所有 $i$ 的倍數（$2$ 倍或以上）標示為非質數。枚舉結束後即可得知每個整數是否為質數。
+
+以下示範使用埃拉托斯特尼演算法找出不超過 $25$ 的質數，其中刪除線表示該數已被標示為非質數：
+\begin{itemize}
+    \item 將介於 $2$ 到 $20$ 的整數標為質數：2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+    \item 枚舉介於 $2$ 到 $\lfloor\sqrt{25}\rfloor = 5$ 的整數
+    \begin{itemize}
+        \item $2$ 被標示為質數，故將 $4,6,\ldots,20$ 標示為非質數：2 3 \sout{4} 5 \sout{6} 7 \sout{8} 9 \sout{10} 11 \sout{12} 13 \sout{14} 15 \sout{16} 17 \sout{18} 19 \sout{20} 21 \sout{22} 23 \sout{24} 25
+        \item $3$ 被標示為質數，故將 $6,9,\ldots,24$ 標示為非質數：2 3 \sout{4} 5 \sout{6} 7 \sout{8} \sout{9} \sout{10} 11 \sout{12} 13 \sout{14} \sout{15} \sout{16} 17 \sout{18} 19 \sout{20} \sout{21} \sout{22} 23 \sout{24} 25
+        \item $4$ 被標示為非質數
+        \item $5$ 被標示為質數，故將 $5,10,\ldots,25$ 標示為非質數：2 3 \sout{4} 5 \sout{6} 7 \sout{8} \sout{9} \sout{10} 11 \sout{12} 13 \sout{14} \sout{15} \sout{16} 17 \sout{18} 19 \sout{20} \sout{21} \sout{22} 23 \sout{24} \sout{25}
+    \end{itemize}
+    \item 枚舉結束，不超過 $25$ 的質數有：2 3 5 7 11 13 17 19 23
+\end{itemize}
+
+右方為埃拉托斯特尼演算法的實作，其中 \texttt{isprime[i]} 若為 $1$ 表示 $i$ 被標示為質數；否則 $i$ 被標示為非質數，請回答第 16. 題及第 17. 題：
+
+\begin{multicols}{2}
+
+\begin{enumerate}[start=16]
+
+\begin{TestProblem}
+
+\TestBlank{1}、\TestBlank{2}、\TestBlank{3} 依序應填入：
+
+\TestOptionOne
+{\lstinline{i * i <= n}；\lstinline{i * j <= n}；\lstinline{i * j}}
+{\lstinline{i <= (n ^ 1/2)}；\lstinline{j <= n}；\lstinline{j}}
+{\lstinline{i * i <= n}；\lstinline{j <= n}；\lstinline{j}}
+{\lstinline{i <= (n ^ 1/2)}；\lstinline{i * j <= n}；\lstinline{i * j}}
+
+\end{TestProblem}
+
+\begin{TestProblem}
+
+右方程式碼輸出為何？
+
+\TestOptionQuater{\texttt{117}}{\texttt{74}}{\texttt{75}}{\texttt{113}}
+
+\end{TestProblem}
+
+\end{enumerate}
+
+\columnbreak
+
+\begin{lstlisting}
+#include<stdio.h>
+
+int main(){
+    int n = 100;
+    
+    int isprime[101];
+    for(int i = 2; i <= n; i++)
+        isprime[i] = 1;
+
+    int cnt = 0;
+    for(int i = 2; __(1)__; i++)
+        if(isprime[i])
+            for(int j = 2; __(2)__; j++)
+                isprime[__(3)__] = 0, cnt++;
+
+    printf("%d\n", cnt);
+
+    return 0;
+}
+\end{lstlisting}
+
+\end{multicols}

@@ -1,0 +1,41 @@
+\begin{TestProblem}
+
+\begin{multicols}{2}
+
+右方程式碼之輸出為何？
+
+\TestOptionQuater{\texttt{12}}{\texttt{10}}{\texttt{11}}{\texttt{13}}
+
+\columnbreak
+
+\begin{lstlisting}
+#include<stdio.h>
+
+int f(int x){
+    int ret = 0;
+    switch(x){
+        case 1:
+            ret = 1;
+            break;
+        case 2:
+            ret = 2;
+        case 3:
+            ret = 3;
+            return ret;
+        default:
+            ret = 4;
+            break;
+    }
+    return ret;
+}
+
+int main(){
+    printf("%d\n", f(1) + f(2) + f(3) + f(4));
+
+    return 0;
+}
+\end{lstlisting}
+
+\end{multicols}
+
+\end{TestProblem}

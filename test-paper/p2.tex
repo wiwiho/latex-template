@@ -1,0 +1,74 @@
+\begin{TestProblem}
+
+\begin{multicols}{2}
+
+右方程式碼之輸出為何？
+
+\hspace{-0.28cm}
+\begin{tabular}{p{0.4\linewidth}p{0.4\linewidth}}
+
+\begin{enumerate}[(A)]
+\item ~
+\begin{lstlisting}[aboveskip=-0.8\baselineskip, numbers=none]
+-++++
+--+++
+---++
+----+
+\end{lstlisting}
+\end{enumerate} &
+
+\begin{enumerate}[(A), start=2]
+\item ~
+\begin{lstlisting}[aboveskip=-0.8\baselineskip, numbers=none]
++
+-++
+--+++
+---++++
+\end{lstlisting}
+\end{enumerate} \\
+
+\vspace{-0.8cm}
+\begin{enumerate}[(A), start=3]
+\item ~
+\begin{lstlisting}[aboveskip=-0.8\baselineskip, numbers=none]
+++++
+-+++
+--++
+---+
+\end{lstlisting}
+\end{enumerate} &
+
+\vspace{-0.8cm}
+\begin{enumerate}[(A), start=4]
+\item ~
+\begin{lstlisting}[aboveskip=-0.8\baselineskip, numbers=none]
+---++++
+--+++
+-++
++
+\end{lstlisting}
+\end{enumerate}
+
+\end{tabular}
+
+\columnbreak
+
+\begin{lstlisting}
+#include<stdio.h>
+
+int main(){
+    for(int i = 0; i <= 3; i++){
+        for(int j = i; j > 0; j--)
+            printf("-");
+        for(int j = i; j < 4; j++)
+            printf("+");
+        printf("\n");
+    }
+
+    return 0;
+}
+\end{lstlisting}
+
+\end{multicols}
+
+\end{TestProblem}

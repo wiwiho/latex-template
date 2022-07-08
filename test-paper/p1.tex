@@ -1,0 +1,26 @@
+\begin{TestProblem}
+
+\begin{multicols}{2}
+
+右方程式碼之輸出為何？
+
+\TestOptionQuater{\texttt{65}}{\texttt{60}}{\texttt{54}}{\texttt{50}}
+
+\columnbreak
+
+\begin{lstlisting}
+#include<stdio.h>
+
+int main(){
+    int T = 5, s = 0;
+    while(T--)
+        s += T + 10;
+    printf("%d\n", s);
+
+    return 0;
+}
+\end{lstlisting}
+
+\end{multicols}
+
+\end{TestProblem}

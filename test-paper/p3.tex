@@ -1,0 +1,33 @@
+\begin{TestProblem}
+
+\begin{multicols}{2}
+
+右方程式碼之輸出為何？
+
+\TestOptionQuater{\texttt{36}}{\texttt{34}}{\texttt{39}}{\texttt{24}}
+
+\columnbreak
+
+\begin{lstlisting}
+#include<stdio.h>
+
+int a = 1;
+
+int main(){
+    int a = 2, ans = 0;
+    for(int i = 0; i < a; i++){
+        for(int j = 0; j < a; j++)
+            ans += a;
+        a = 3, ans += a;
+    }
+    ans += a;
+
+    printf("%d\n", ans);
+
+    return 0;
+}
+\end{lstlisting}
+
+\end{multicols}
+
+\end{TestProblem}
