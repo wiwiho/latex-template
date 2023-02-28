@@ -10,7 +10,6 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsmath}
-\usepackage{fancyhdr}
 \usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{ulem}
@@ -25,31 +24,8 @@
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt
 
-\setCJKmainfont[BoldFont={SourceHanSansTW-Bold.otf},AutoFakeSlant]{SourceHanSansTW-Regular.otf}
-\setmainfont[BoldFont={SourceHanSansTW-Bold.otf},AutoFakeSlant]{SourceHanSansTW-Regular.otf}
-\usetikzlibrary{arrows,decorations.markings,decorations.pathreplacing}
-\pagestyle{fancy}
-
-\lstset{
-language=C++,
-basicstyle=\footnotesize\ttfamily,
-numberstyle=\footnotesize,
-numbers=left,
-stepnumber=1,
-numbersep=5pt,
-backgroundcolor=\color{white},
-showspaces=false,
-showstringspaces=false,
-showtabs=false,
-frame=false,
-tabsize=2,
-captionpos=b,
-breaklines=true,
-breakatwhitespace=false,
-escapeinside={\%*}{*)},
-morekeywords={*},
-literate={\ \ }{{\ }}1
-}
+\setCJKmainfont{Noto Sans CJK TC}
+\setmainfont{Noto Sans CJK TC}
 
 \definecolor{title}{HTML}{325B95}
 \definecolor{content1}{HTML}{CBD9FF}
@@ -73,12 +49,6 @@ literate={\ \ }{{\ }}1
 \newcommand{\ScheduleConent}[4]{ \rowcolor{#1} #2 & #4 & #3 \\ \hline }
 
 \begin{document}
-
-\renewcommand{\headrulewidth}{0pt}
-\cfoot{}
-\lhead{}
-\chead{}
-\rhead{}
 
 \renewcommand{\arraystretch}{2}
 \setlength\arrayrulewidth{0.2cm}

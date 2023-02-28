@@ -1,31 +1,36 @@
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
+\usepackage[a4paper,top=2.8cm,bottom=2.8cm,left=2.3cm,right=2.3cm]{geometry}
 \usepackage{xeCJK}
 \usepackage{fontspec}
-\usepackage[a4paper,top=2.8cm,bottom=2.8cm,left=2.5cm,right=2.5cm]{geometry}
 \usepackage{graphicx}
-\usepackage{listings}
 \usepackage{xcolor}
 \usepackage{indentfirst}
 \usepackage{tikz}
+\usepackage{pgfplots}
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{fancyhdr}
 \usepackage{tabularx}
 \usepackage{hyperref}
+\usepackage{xurl}
 \usepackage{ulem}
 \usepackage{version}
 \usepackage{thmtools}
 \usepackage{qtree}
+\usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{mathtools}
-\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{minted}
+\usepackage{mdframed}
+\usepackage{lipsum}
 
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt
 
-\setCJKmainfont[BoldFont={SourceHanSerifTW-SemiBold.otf},AutoFakeSlant]{SourceHanSerifTW-Regular.otf}
-\setmonofont{JetBrainsMono-Regular.ttf}
+\setCJKmainfont{Noto Serif CJK TC}
+\setmonofont{Source Code Pro}
 \usetikzlibrary{arrows,decorations.markings,decorations.pathreplacing}
 \pagestyle{fancy}
 
@@ -33,72 +38,144 @@
 \tikzset{edge/.style = {decoration={markings,mark=at position 1 with %
             {\arrow[scale=2,>=stealth]{>}}},postaction={decorate}}}
 
-\lstset{
-language=C++,
-basicstyle=\footnotesize\ttfamily,
-numberstyle=\footnotesize,
-numbers=left,
-stepnumber=1,
-numbersep=5pt,
-backgroundcolor=\color{white},
-showspaces=false,
-showstringspaces=false,
-showtabs=false,
-frame=false,
-tabsize=2,
-captionpos=b,
-breaklines=true,
-breakatwhitespace=false,
-escapeinside={\%*}{*)},
-morekeywords={*},
-literate={\ \ }{{\ }}1
-}
-
-\setlist[enumerate]{itemsep=0pt, parsep=0pt, topsep=0pt}
-\setlist[itemize]{itemsep=0pt, parsep=0pt, topsep=0pt}
 \renewcommand{\baselinestretch}{1.3}
+
+\newtheoremstyle{owo}% name of the style to be used
+  {10pt}% measure of space to leave above the theorem. E.g.: 3pt
+  {10pt}% measure of space to leave below the theorem. E.g.: 3pt
+  {}% name of font to use in the body of the theorem
+  {}% measure of space to indent
+  {\bfseries}% name of head font
+  { }% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {\thmname{#1}\thmnumber{ #2}.\thmnote{ (#3)}}
+
+\theoremstyle{owo}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Lemma}{Lemma}
+\newtheorem{Observation}{Observation}
+\newtheorem{Corollary}{Corollary}
+\newtheorem*{Proof}{Proof}
+
+\DeclareMathOperator*{\argmin}{argmin}
+
+\hypersetup{
+    %colorlinks=true,
+    }
+
+\usemintedstyle{vs}
+\renewcommand{\theFancyVerbLine}{\ttfamily\normalsize\arabic{FancyVerbLine}}
+\newenvironment{Code}[1]{~\vspace{-15pt}\VerbatimEnvironment\begin{minted}[bgcolor=black!5!white, breaklines, linenos]{#1}}{\end{minted}}
+
+\newcommand{\Inline}{\mintinline[bgcolor=black!5!white, breaklines]{text}}
+
+\newmdenv[topline=false, bottomline=false, rightline=false, linewidth=3pt, linecolor=black!10!white]{Quotemd}
+\newenvironment{Quote}{~\vspace{-15pt}\begin{Quotemd}}{\end{Quotemd}}
 
 \begin{document}
 
-\renewcommand{\headrulewidth}{0pt}
-\cfoot{}
-\lhead{}
-\chead{}
-\rhead{}
-
-\begin{center}
-    \huge
-    \textbf{標題}
-
-    \vspace{12pt}
-    \large
-    HIHIHI
-    \normalsize
-\end{center}
-\vspace{36pt}
-
-\renewcommand{\contentsname}{目錄}
-\tableofcontents
-
-\clearpage
 \renewcommand{\headrulewidth}{1pt}
 \pagenumbering{arabic}
-\setlength\parindent{24pt}
-\setlength\parskip{12pt}
+\setlength\parindent{20pt}
+\setlength\parskip{10pt}
 \cfoot{\thepage}
-\lhead{左邊}
-\chead{中間}
-\rhead{右邊}
+\lhead{Left}
+\chead{Center}
+\rhead{Right}
 
-裝弱勢必能夠左右未來。若能夠欣賞到裝弱的美，相信我們一定會對裝弱改觀。裝弱的存在，令我無法停止對他的思考。我們需要淘汰舊有的觀念，在人生的歷程中，裝弱的出現是必然的。巴爾扎克講過，人活著就要用生命去解釋自己的信。這是撼動人心的。說到裝弱，你會想到什麼呢？在人類的歷史中，我們總是盡了一切努力想搞懂裝弱。看看別人，再想想自己，會發現問題的核心其實就在你身旁。我們不妨可以這樣來想: 我們不得不面對一個非常尷尬的事實，那就是，歐里庇得斯曾經說過，什麼樣的人，交什麼樣的朋友。這不禁令我深思。若能夠洞悉裝弱各種層面的含義，勢必能讓思維再提高一個層級。當前最急迫的事，想必就是釐清疑惑了。這樣看來，問題的關鍵看似不明確，但想必在諸位心中已有了明確的答案。生活中，若裝弱出現了，我們就不得不考慮它出現了的事實。儘管裝弱看似不顯眼，卻佔據了我的腦海。既然，我們都知道，只要有意義，那麼就必須慎重考慮。裝弱的出現，必將帶領人類走向更高的巔峰。對我個人而言，裝弱不僅僅是一個重大的事件，還可能會改變我的人生。蘇軾曾經提到過，養生治性，行義求志。這把視野帶到了全新的高度。裝弱因何而發生？了解清楚裝弱到底是一種怎麼樣的存在，是解決一切問題的關鍵。
+\setlist[enumerate]{itemsep=0pt, parsep=0pt, topsep=0pt}
+\setlist[itemize]{itemsep=0pt, parsep=0pt, topsep=0pt}
 
-王陽明曾說過一句意義深遠的話，故立志者，為學之心也；為學者，立誌之事也。這句話令我不禁感慨問題的迫切性。需要考慮周詳裝弱的影響及因應對策。我想，把裝弱的意義想清楚，對各位來說並不是一件壞事。裝弱對我來說有著舉足輕重的地位，必須要嚴肅認真的看待。儘管如此，別人往往卻不這麼想。哈菲茲講過，在年輕人的頸項上，沒有什麼東西能比事業心這顆燦爛的寶珠更迷人的了。這句話把我們帶到了一個新的維度去思考這個問題。伏爾泰說過一句經典的名言，常識並不是大家都知道的，常見的東西。這讓我的思緒清晰了。面對如此難題，我們必須設想周全。問題的關鍵究竟為何？對於裝弱，我們不能不去想，卻也不能走火入魔。歌德曾經講過一句值得人反覆尋思的話，流水在碰到底處時才會釋放活力。但願各位能從這段話中獲得心靈上的滋長。
+\section*{Problem 1}
 
-老舊的想法已經過時了。想必大家都能了解裝弱的重要性。對裝弱進行深入研究，在現今時代已經無法避免了。蘇步青講過一段深奧的話，今天能作完的事，決不拖到明天。但願諸位理解後能從中有所成長。若發現問題比我們想像的還要深奧，那肯定不簡單。裝弱的發生，到底需要如何實現，不裝弱的發生，又會如何產生。布埃斯特曾提出，圖書出版業是思想重砲。想必各位已經看出了其中的端倪。
+\subsection*{(a)}
 
+孔乙己是站着喝酒而穿長衫的唯一的人。他身材很高大；青白臉色，皺紋間時常夾些傷痕；一部亂蓬蓬的花白的鬍子。穿的雖然是長衫，可是又髒又破，似乎十多年沒有補，也沒有洗。他對人說話，總是滿口之乎者也，教人半懂不懂的。因爲他姓孔，別人便從描紅紙上的「上大人孔乙己」這半懂不懂的話裏，替他取下一個綽號，叫作孔乙己。孔乙己一到店，所有喝酒的人便都看着他笑，有的叫道，「孔乙己，你臉上又添上新傷疤了！」他不回答，對櫃裏說，「溫兩碗酒，要一碟茴香豆。」便排出九文大錢。他們又故意的高聲嚷道，「你一定又偷了人家的東西了！」孔乙己睜大眼睛說，「你怎麼這樣憑空汚人清白……」「什麼清白？我前天親眼見你偷了何家的書，吊着打。」孔乙己便漲紅了臉，額上的青筋條條綻出，爭辯道，「竊書不能算偷……竊書！……讀書人的事，能算偷麼？」接連便是難懂的話，什麼「君子固窮」，什麼「者乎」之類，引得衆人都鬨笑起來：店內外充滿了快活的空氣。
+
+Example for inline code: \Inline{hello}
+
+\lipsum[1]
+
+\begin{Lemma}
+    \lipsum[2]
+\end{Lemma}
+
+\begin{Proof}
+    \lipsum[3]
+    \qed
+\end{Proof}
+
+\begin{Theorem}[Name]
+    \lipsum[4]
+\end{Theorem}
+
+\begin{Code}{text}
+hihihi
+\end{Code}
+
+\lipsum[9]
+
+\begin{Code}{C++}
+int main(){
+    cout << "owo\n";
+    return 0; // hello
+}
+\end{Code}
+
+\lipsum[10]
+
+\begin{Code}{Python}
+for i in range(1, 100):
+    print("123") # hello
+\end{Code}
+
+\lipsum[11]
+
+\begin{Quote}
+    \lipsum[5]
+\end{Quote}
+
+\lipsum[6]
 \begin{itemize}
-    \item 第一項
-    \item 第二項
+    \item 1
+    \item 2
 \end{itemize}
+\lipsum[7]
+\begin{enumerate}
+    \item 1
+    \item 2
+\end{enumerate}
+\begin{enumerate}[(a)]
+    \item 1
+    \item 2
+\end{enumerate}
+
+\begin{figure}
+    \begin{center}
+        \begin{tikzpicture}
+            \node[graph node] (v1) at (0, 0) {$1$};
+            \node[graph node] (v2) at (-2, -2) {$2$};
+            \node[graph node] (v3) at (0, -2) {$3$};
+            \node[graph node] (v4) at (2, -2) {$4$};
+            \draw[edge] (v1) -- (v2);
+            \draw[edge] (v1) -- (v3);
+            \draw[edge] (v1) -- (v4);
+            \draw[edge] (v2) to [bend left] (v1);
+            \draw[edge] (v4) to [bend right] (v1);
+        \end{tikzpicture}
+    \end{center}
+
+    \caption{test}
+\end{figure}
+
+\begin{algorithm}
+    \caption{hello}
+    \begin{algorithmic}
+        \State $i \gets 1$
+        \ForAll{$j \in S$}
+            \State $i \gets i + j$
+        \EndFor
+    \end{algorithmic}
+\end{algorithm}
 
 \end{document}
