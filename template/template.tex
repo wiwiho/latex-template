@@ -22,9 +22,9 @@
 \usepackage{algpseudocode}
 \usepackage{mathtools}
 \usepackage[shortlabels]{enumitem}
-\usepackage{minted}
 \usepackage{mdframed}
 \usepackage{lipsum}
+\usepackage{listings}
 
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0pt plus 1pt
@@ -63,14 +63,28 @@
     %colorlinks=true,
     }
 
-\usemintedstyle{vs}
-\renewcommand{\theFancyVerbLine}{\ttfamily\normalsize\arabic{FancyVerbLine}}
-\newenvironment{Code}[1]{~\vspace{-15pt}\VerbatimEnvironment\begin{minted}[bgcolor=black!5!white, breaklines, linenos]{#1}}{\end{minted}}
-
-\newcommand{\Inline}{\mintinline[bgcolor=black!5!white, breaklines]{text}}
-
 \newmdenv[topline=false, bottomline=false, rightline=false, linewidth=3pt, linecolor=black!10!white]{Quotemd}
 \newenvironment{Quote}{~\vspace{-15pt}\begin{Quotemd}}{\end{Quotemd}}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    numberstyle=\footnotesize,
+    %numbers=left,
+    stepnumber=1,
+    numbersep=3pt,
+    commentstyle=\color{black!50},
+    keywordstyle=\color{white!0!blue},
+    stringstyle=\color{black!50!green},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={\%*}{*)},
+    morekeywords={*}
+}
 
 \begin{document}
 
@@ -92,7 +106,7 @@
 
 孔乙己是站着喝酒而穿長衫的唯一的人。他身材很高大；青白臉色，皺紋間時常夾些傷痕；一部亂蓬蓬的花白的鬍子。穿的雖然是長衫，可是又髒又破，似乎十多年沒有補，也沒有洗。他對人說話，總是滿口之乎者也，教人半懂不懂的。因爲他姓孔，別人便從描紅紙上的「上大人孔乙己」這半懂不懂的話裏，替他取下一個綽號，叫作孔乙己。孔乙己一到店，所有喝酒的人便都看着他笑，有的叫道，「孔乙己，你臉上又添上新傷疤了！」他不回答，對櫃裏說，「溫兩碗酒，要一碟茴香豆。」便排出九文大錢。他們又故意的高聲嚷道，「你一定又偷了人家的東西了！」孔乙己睜大眼睛說，「你怎麼這樣憑空汚人清白……」「什麼清白？我前天親眼見你偷了何家的書，吊着打。」孔乙己便漲紅了臉，額上的青筋條條綻出，爭辯道，「竊書不能算偷……竊書！……讀書人的事，能算偷麼？」接連便是難懂的話，什麼「君子固窮」，什麼「者乎」之類，引得衆人都鬨笑起來：店內外充滿了快活的空氣。
 
-Example for inline code: \Inline{hello}
+Example for inline code: \texttt{hello}
 
 \lipsum[1]
 
@@ -109,25 +123,25 @@ Example for inline code: \Inline{hello}
     \lipsum[4]
 \end{Theorem}
 
-\begin{Code}{text}
+\begin{lstlisting}
 hihihi
-\end{Code}
+\end{lstlisting}
 
 \lipsum[9]
 
-\begin{Code}{C++}
+\begin{lstlisting}[language=C++]
 int main(){
     cout << "owo\n";
     return 0; // hello
 }
-\end{Code}
+\end{lstlisting}
 
 \lipsum[10]
 
-\begin{Code}{Python}
+\begin{lstlisting}[language=Python]
 for i in range(1, 100):
     print("123") # hello
-\end{Code}
+\end{lstlisting}
 
 \lipsum[11]
 
